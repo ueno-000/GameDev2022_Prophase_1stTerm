@@ -12,21 +12,24 @@ public class EXPtest : MonoBehaviour
     [SerializeField] int _level = 1;
     int nowLevel = 0;
 
-    [SerializeField] GameObject HealthController;
-    [SerializeField] HealthController helth;
-
+    [HideInInspector] public Slider slider;
     void Start()
     {
-        _maxEXP[0] = HealthController.GetComponent<HealthController>()._maxHp;
-        helth = helth.GetComponent<HealthController>();
+        slider = GetComponent<Slider>();
+        //_maxEXP[0] = GetComponent<HealthController>()._maxHp;
         nowLevel = 0;
+        slider.maxValue = _maxEXP[0];
     }
     void Update()
     {
-        //hp処理
-        helth.UpdateSlider(_exp);
-
+        UpdateSlider(_exp);
         UPLevel();
+    }
+    /// <summary>Hpをスライダーに表示させるメソッド</summary>
+    public void UpdateSlider(int exp)
+    {
+        exp = Mathf.Clamp(exp, 0, _maxEXP[nowLevel]);
+        slider.value = exp;
     }
 
     public void UPEXP()
@@ -41,7 +44,8 @@ public class EXPtest : MonoBehaviour
         {
             nowLevel++;
             _exp = 0;
-            _maxEXP[nowLevel+1] = HealthController.GetComponent<HealthController>()._maxHp;
+            //HealthController.GetComponent<HealthController>()._maxHp = _maxEXP[nowLevel];
+            slider.maxValue = _maxEXP[nowLevel];
             _level++;
         }
     }
