@@ -901,6 +901,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _debugMode: 0
   _hp: 100
+  _exp: 0
   HPController: {fileID: 1146523968}
   helth: {fileID: 1146523971}
   isGameOver: 0

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerValueScript : MonoBehaviour,IReceiveDamage
+public class PlayerValueScript : MonoBehaviour,IGetValue ,IReceiveDamage
 {
     /// <summary>
     /// デバッグモードTrueにすると攻撃を受けない
@@ -15,6 +15,12 @@ public class PlayerValueScript : MonoBehaviour,IReceiveDamage
     /// </summary>
     [SerializeField] int _hp = 100;
     int _maxHp;
+    [Header("EXP")]
+    /// <summary>
+    /// EXP
+    /// </summary>
+    [SerializeField] int _exp = 0;
+
     [SerializeField] GameObject HPController;
     [SerializeField] HealthController helth;
 
@@ -53,7 +59,10 @@ public class PlayerValueScript : MonoBehaviour,IReceiveDamage
         }
     }
 
-
+    public void GetEXP(int getexp)
+    {
+        _exp += getexp;
+    }
     public void ReceiveDamage(int damage)
     {
         if (isGameOver == false && _debugMode == false)
