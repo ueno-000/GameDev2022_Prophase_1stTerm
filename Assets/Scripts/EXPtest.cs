@@ -13,13 +13,13 @@ public class EXPtest : MonoBehaviour
     int nowLevel = 0;
 
     [HideInInspector] public Slider slider;
-    Text text;
+    Text _text;
     [SerializeField] GameObject _levelText;
 
     void Start()
     {
         slider = GetComponent<Slider>();
-        text = _levelText.GetComponent<Text>();
+        _text = _levelText.GetComponent<Text>();
         //_maxEXP[0] = GetComponent<HealthController>()._maxHp;
         nowLevel = 0;
         slider.maxValue = _maxEXP[0];
@@ -48,9 +48,10 @@ public class EXPtest : MonoBehaviour
         {
             nowLevel++;
             _exp = 0;
-            //HealthController.GetComponent<HealthController>()._maxHp = _maxEXP[nowLevel];
-            slider.maxValue = _maxEXP[nowLevel];
             _level++;
+            _text.text = _level.ToString();
+            slider.maxValue = _maxEXP[nowLevel];
+            
         }
     }
 }
