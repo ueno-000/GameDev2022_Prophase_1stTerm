@@ -32,7 +32,7 @@ public class EnemyScript : MonoBehaviour
     }
 
     
-    private void OnCollisionStay2D(Collision2D collision)
+    private void OnCollisionStay(Collision collision)
     {
         var damagetarget = _player.GetComponent<IReceiveDamage>();
 
