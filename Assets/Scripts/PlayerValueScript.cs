@@ -55,7 +55,6 @@ public class PlayerValueScript : MonoBehaviour,IGetValue ,IReceiveDamage
         {
             isGameOver = true;
             Debug.Log("GameOver");
-            GetComponent<Renderer>().material.color = Color.black;
         }
     }
 
