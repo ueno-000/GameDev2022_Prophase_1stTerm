@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyScript : MonoBehaviour
 {
@@ -9,26 +10,17 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] float _hp = 5f;
     [SerializeField] int _retentionEXPvalue = 10;
 
-    GameObject _player;
+    NavMeshAgent _agent;
+    Transform _player;
 
     private void Start()
     {
-        _player = GameObject.Find("Player");
+        _agent = GetComponent<NavMeshAgent>();
+        _player = GameObject.Find("Player").transform;
     }
     void Update()
     {
-        transform.position = Vector2.MoveTowards(transform.position, _player.transform.position, _speed / 100);
-
-        if (_hp <= 0)
-        {
-            var receiveEXP = _player.GetComponent<IGetValue>();
-            //IDamagable ÇÕ AddDamage ÇÃèàóùÇ™ïKê{
-            if (receiveEXP != null)
-            {
-                _player.GetComponent<IGetValue>().GetEXP(_retentionEXPvalue);
-            }
-            Destroy(gameObject);
-        }
+        _agent.destination = _player.position;
     }
 
     
