@@ -19,10 +19,11 @@ public class SkillBarrier : MonoBehaviour
 
     [SerializeField] GameObject _player;
 
+
     /// <summary>
     /// Damage
     /// </summary>
-    [Header("ダメージ"), SerializeField] public int _damage = 10;
+    [Header("ダメージ"), SerializeField] public int _damageValue = 10;
     /// <summary>
     /// インターバル
     /// </summary>
@@ -44,4 +45,14 @@ public class SkillBarrier : MonoBehaviour
         _hitAreaCol = _hitArea.GetComponent<SphereCollider>();
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        var damagetarget = other.gameObject.GetComponent<IReceiveDamage>();
+
+        //IDamagable は AddDamage の処理が必須
+        if (damagetarget != null && !_player)
+        {
+            other.gameObject.GetComponent<IReceiveDamage>().ReceiveDamage(_damageValue);
+        }
+    }
 }
