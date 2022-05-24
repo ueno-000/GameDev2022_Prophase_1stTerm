@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class EnemyGenerater : MonoBehaviour
+public class EnemyGenerater : MonoBehaviour,IPause
 {
     [SerializeField] GameObject _enemys = default;
     [SerializeField] Transform[] _spawnpoint = default;
     [SerializeField] float _time = 0;
     [SerializeField] float _intervalTime = 2;
+
+    bool isPause = false;
 
      void Start()
     {
@@ -22,12 +24,20 @@ public class EnemyGenerater : MonoBehaviour
 
         for (int i = 0;i <= _spawnpoint.Length;i++)
         {
-            if (_intervalTime <= _time)
+            if (_intervalTime <= _time && !isPause)
             {
                 Instantiate(_enemys, _spawnpoint[i]);
                 _time = 0;
             }
         }
-        
+    }
+
+    public void Pause()
+    {
+        isPause = true;
+    }
+    public void Resume()
+    {
+        isPause = false;
     }
 }
