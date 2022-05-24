@@ -5,7 +5,7 @@ public class BulletGenerator : MonoBehaviour
 {
 
     // エディタから弾として使うプレハブを設定
-    public GameObject pf_Bullet;
+    public GameObject _bulletPrefub;
     // 弾を備蓄しておくList
     List<BulletController> list_Bullets = new List<BulletController>();
     // 備蓄しておく弾の数
@@ -18,7 +18,7 @@ public class BulletGenerator : MonoBehaviour
         for (int i = 0; i < MAX_BULLETS; i++)
         {
             // 弾の生成
-            bullet = ((GameObject)Instantiate(pf_Bullet)).GetComponent<BulletController>();
+            bullet = ((GameObject)Instantiate(_bulletPrefub)).GetComponent<BulletController>();
             // 弾を、この「BulletGenerator」オブジェクトの子にしておく
             bullet.transform.parent = this.transform;
             // 発射前は非アクティブにしておく

@@ -5,12 +5,13 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour,IPause
 {
     [SerializeField] float _movePower = 3;
+    [SerializeField] Transform _muzzle;
     Rigidbody _rb = default;
     /// <summary>入力された方向の XZ 平面でのベクトル</summary>
     Vector3 _dir;
 
     // エディタから「BulletGenerator」スクリプトを設定
-    public BulletGenerator sc_BulletGenerator;
+    public BulletGenerator _bulletGenerator;
 
     void Start()
     {
@@ -39,7 +40,7 @@ public class PlayerController : MonoBehaviour,IPause
         // スペースキーを押した時、「Player」の位置から弾を発射する
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            sc_BulletGenerator.FireBullet(transform.position);
+            _bulletGenerator.FireBullet(_muzzle.position);
         }
     }
 
