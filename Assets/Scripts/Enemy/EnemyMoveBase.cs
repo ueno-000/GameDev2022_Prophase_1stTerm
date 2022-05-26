@@ -26,9 +26,9 @@ public class EnemyMoveBase: MonoBehaviour,IPause
     }
     private void OnCollisionStay(Collision collision)
     {
-        var damagetarget = _player.GetComponent<IReceiveDamage>();
+        //var damagetarget = _player.GetComponent<IReceiveDamage>();
         
-        if (collision.gameObject.tag == "Player"  && damagetarget != null)
+        if (collision.gameObject.tag == "Player" )
         {
             _player.GetComponent<IReceiveDamage>().ReceiveDamage(_damageValue);
         }

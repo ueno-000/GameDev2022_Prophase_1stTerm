@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerValueScript : MonoBehaviour,IGetValue ,IReceiveDamage
+public class PlayerValueScript : MonoBehaviour,IGetValue,IReceiveDamage
 {
     /// <summary>
     /// デバッグモードTrueにすると攻撃を受けない
@@ -62,6 +62,7 @@ public class PlayerValueScript : MonoBehaviour,IGetValue ,IReceiveDamage
     {
         _exp += getexp;
     }
+
     public void ReceiveDamage(int damage)
     {
         if (isGameOver == false && _debugMode == false)
