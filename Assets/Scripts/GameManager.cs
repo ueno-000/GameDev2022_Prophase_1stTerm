@@ -9,26 +9,30 @@ public class GameManager : MonoBehaviour
     [SerializeField] float _timelimit = 30f;
     [SerializeField] Text _timeText;
 
+    [Header("SceneManager‚ðŠi”["), SerializeField] GameObject _sceneManager;
     Scenemanager scenemanager;
+    //Scenemanager scenemanager;
     void Start()
     {
-        
+
+        scenemanager = _sceneManager.GetComponent<Scenemanager>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        _timelimit -= Time.deltaTime;
-
-
+      
         if (_timelimit <= 0)
         {
-            scenemanager.Fade(true,"ResultScene");
+            scenemanager.Fade(false, "ResultScene");
         }
     }
 
     private void FixedUpdate()
     {
-        _timeText.text = _timelimit.ToString();
+        _timelimit = Mathf.Clamp(_timelimit, 0, _timelimit);
+        _timelimit -= Time.deltaTime;
+        _timeText.text = _timelimit.ToString("f1") + "s";
     }
 }
