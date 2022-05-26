@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class EnemyMoveBase: MonoBehaviour,IPause
 {
+    [SerializeField] int _damageValue = 2;
     //移動速度
     [SerializeField] float _speed;
     GameObject _player;
@@ -22,6 +23,15 @@ public class EnemyMoveBase: MonoBehaviour,IPause
         //オブジェクトを前方向に移動する
         transform.position = transform.position + transform.forward * _speed * Time.deltaTime;
         
+    }
+    private void OnCollisionStay(Collision collision)
+    {
+        var damagetarget = _player.GetComponent<IReceiveDamage>();
+        
+        if (collision.gameObject.tag == "Player"  && damagetarget != null)
+        {
+            _player.GetComponent<IReceiveDamage>().ReceiveDamage(_damageValue);
+        }
     }
 
     public void Pause()

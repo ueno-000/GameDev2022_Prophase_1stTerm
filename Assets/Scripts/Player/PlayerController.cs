@@ -50,6 +50,7 @@ public class PlayerController : MonoBehaviour,IPause
         _rb.AddForce(_dir.normalized * _movePower, ForceMode.Force);
     }
 
+
     public void Pause()
     {
         _rb.Sleep();
