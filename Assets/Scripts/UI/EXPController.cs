@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EXPtest : MonoBehaviour
+public class EXPController : MonoBehaviour
 {
-    [SerializeField] int _exp = 0;
-    [SerializeField] int _pulsexp = 10;
+    [SerializeField]public int _exp = 0;
+  //  [SerializeField] int _pulsexp = 10;
     [SerializeField] int[] _maxEXP = new [] {100,200,300,400 };
 
     [SerializeField] int _level = 1;
@@ -16,6 +16,7 @@ public class EXPtest : MonoBehaviour
     Text _text;
     [SerializeField] GameObject _levelText;
 
+    [SerializeField] PlayerValueScript _playerValueScript;
     void Start()
     {
         slider = GetComponent<Slider>();
@@ -23,9 +24,12 @@ public class EXPtest : MonoBehaviour
         //_maxEXP[0] = GetComponent<HealthController>()._maxHp;
         nowLevel = 0;
         slider.maxValue = _maxEXP[0];
+       
     }
+
     void Update()
     {
+        _exp = _playerValueScript.GetComponent<PlayerValueScript>()._exp;
         UpdateSlider(_exp);
         UPLevel();
     }
@@ -34,12 +38,6 @@ public class EXPtest : MonoBehaviour
     {
         exp = Mathf.Clamp(exp, 0, _maxEXP[nowLevel]);
         slider.value = exp;
-    }
-
-    public void UPEXP()
-    {
-        _exp += _pulsexp;
-        Debug.Log("EXP:"+_exp+"Level:"+_level);
     }
 
     public void UPLevel()
