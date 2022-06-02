@@ -18,7 +18,7 @@ public class HealthController : MonoBehaviour
     }
 
     /// <summary>Hpをスライダーに表示させるメソッド</summary>
-    public virtual void UpdateSlider(int hp)
+    public  void UpdateSlider(int hp)
     {
         hp = Mathf.Clamp(hp, 0, _maxHp);
         hpSlider.value = hp;

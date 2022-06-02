@@ -16,6 +16,8 @@ public class EXPController : MonoBehaviour
     Text _text;
     [SerializeField] GameObject _levelText;
 
+    [Header("åªç›ÇÃÉåÉxÉãÇÃåoå±ílÇÃè„å¿"), SerializeField] public int _maxNowLevelExp;
+
     [SerializeField] PlayerValueScript _playerValueScript;
     void Start()
     {
@@ -24,6 +26,7 @@ public class EXPController : MonoBehaviour
         //_maxEXP[0] = GetComponent<HealthController>()._maxHp;
         nowLevel = 0;
         slider.maxValue = _maxEXP[0];
+        _maxNowLevelExp = _maxEXP[0];
        
     }
 
@@ -49,7 +52,8 @@ public class EXPController : MonoBehaviour
             _level++;
             _text.text = _level.ToString();
             slider.maxValue = _maxEXP[nowLevel];
-            
+            _maxNowLevelExp = _maxEXP[nowLevel];
+
         }
     }
 }
