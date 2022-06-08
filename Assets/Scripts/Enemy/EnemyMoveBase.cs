@@ -4,8 +4,9 @@ public class EnemyMoveBase: MonoBehaviour,IPause
 {
     [SerializeField] int _damageValue = 2;
     //移動速度
-    [SerializeField] float _speed;
+    [SerializeField] float _speed = 0.5f;
     GameObject _player;
+
     private void Start()
     {
         _player = GameObject.Find("Player");
@@ -13,9 +14,8 @@ public class EnemyMoveBase: MonoBehaviour,IPause
 
     void Update()
     {
-        // 作成してプレイヤーの座標を格納
         Vector3 _playerPos = _player.transform.position;
-        //プレイヤーのX、Zのみ参照
+        //y軸はプレイヤーと同じにする
         _playerPos.y = transform.position.y;
         // プレイヤーに向かせる
         transform.LookAt(_playerPos);
