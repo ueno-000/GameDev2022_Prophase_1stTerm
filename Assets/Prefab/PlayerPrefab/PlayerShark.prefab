@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4415220691864381110}
   - component: {fileID: 4415220691864381109}
   - component: {fileID: 4415220691864381108}
-  - component: {fileID: 4415220691864381115}
   m_Layer: 0
   m_Name: PlayerShark
   m_TagString: Untagged
@@ -65,21 +64,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &4415220691864381115
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4415220691864381114}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcb19b613d7ec3b4ca20e71341574f00, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _movePower: 150
-  _muzzle: {fileID: 0}
-  _bulletGenerator: {fileID: 0}
 --- !u!1 &4415220691886867392
 GameObject:
   m_ObjectHideFlags: 0

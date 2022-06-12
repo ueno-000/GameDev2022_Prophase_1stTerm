@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 2072903635837397033}
   - component: {fileID: 8479909330688752487}
   - component: {fileID: 8027501888775319801}
+  - component: {fileID: 266912310}
   m_Layer: 0
-  m_Name: EnemyPrefab
+  m_Name: Zombie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,6 +79,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damageValue: 2
   _speed: 1
+--- !u!114 &266912310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6520447235879686569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1cf7ba8b502aad498a83f04b7311367, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _retentionExpPrefab: {fileID: 3729265298237981509, guid: 1b9fbec2cbd26b743aadd75e8e3cd8cf, type: 3}
+  _hp: 5
 --- !u!1001 &2403606028412645103
 PrefabInstance:
   m_ObjectHideFlags: 0
