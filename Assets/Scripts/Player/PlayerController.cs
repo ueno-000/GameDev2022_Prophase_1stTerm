@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour,IPause
     }
 
 
-    public void Pause()
+    public void Pause(float time)
     {
         _rb.Sleep();
         _rb.isKinematic = true;

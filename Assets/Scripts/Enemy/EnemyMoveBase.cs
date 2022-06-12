@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyMoveBase: MonoBehaviour,IPause
@@ -7,6 +9,7 @@ public class EnemyMoveBase: MonoBehaviour,IPause
     [SerializeField] float _speed = 0.5f;
     GameObject _player;
 
+    float _time;
     private void Start()
     {
         _player = GameObject.Find("Player");
@@ -26,20 +29,27 @@ public class EnemyMoveBase: MonoBehaviour,IPause
     }
     private void OnCollisionStay(Collision collision)
     {
-        //var damagetarget = _player.GetComponent<IReceiveDamage>();
-        
+         
         if (collision.gameObject.tag == "Player" )
         {
             _player.GetComponent<IReceiveDamage>().ReceiveDamage(_damageValue);
         }
     }
 
-    public void Pause()
+    public void Pause(float time)
     {
+        _time = time;
         _speed = 0;
+        StartCoroutine("PauseTime");
     }
     public void Resume()
     {
         _speed = 2;
+    }
+
+    IEnumerator PauseTime()
+    {
+        yield return new WaitForSeconds(_time);
+        Resume();
     }
 }

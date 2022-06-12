@@ -4,37 +4,66 @@ using UnityEngine;
 
 public class MapGenerator : MonoBehaviour
 {
-    int StageSize = 80;
-    int StageIndex;
-
     /// <summary> Player </summary>
     [SerializeField] Transform Target;
     /// <summary> ステージのプレハブ </summary>
-    [Header("ステージのプレハブ"),SerializeField] GameObject[] stagenum;
-    /// <summary>//スタート時に生成するステージのインデックス</summary>
-    [Header("スタート時に生成するステージのインデックス"), SerializeField] int FirstStageIndex;
-    /// <summary> 事前に生成しておくステージのインデックス </summary>
-    [Header("事前に生成しておくステージのインデックス"), SerializeField] int aheadStage; //事前に生成しておくステージ
+    [Header("ステージのプレハブ"), SerializeField] GameObject[] stagenum;
+    /// <summary>//スタート前のステージの数</summary>
+    [Header("スタート前のステージの数"), SerializeField] int FirstStageIndex;
+    /// <summary> 生成するステージの数 </summary>
+    [Header("生成するステージの列"), SerializeField] int aheadStage;
     /// <summary> 生成したステージのリスト</summary>
-    [Header("生成したステージのリスト"), SerializeField] List<GameObject> StageList = new List<GameObject>();//生成したステージのリスト
+    [Header("生成したステージのリスト"), SerializeField] List<GameObject> StageList = new List<GameObject>();
+    /// <summary> 非アクティブにしたステージのリスト</summary>
+    [Header("非アクティブにしたステージのリスト"), SerializeField] List<GameObject> FalseList = new List<GameObject>();
+
+    [Header("ステージグリットリスト"), SerializeField]
+    private List<stageList> GritList = new List<stageList>();
+
+    [System.Serializable]
+    class stageList
+    {
+        public List<int> StageGrit = new List<int>();
+    }
+
+    [SerializeField] int _mapXnum = 2;
+    [SerializeField] int _mapZnum = 2;
+
+
+    [SerializeField] int targetPosIndexX;
+    [SerializeField] int targetPosIndexZ;
+
+    int StageSize = 84;
+
+    int StageIndex;
+
+    /// <summary>
+    /// ステージ生成時の回転に使う
+    /// </summary>
+    float[] _mapRotates = new float[4] { 0, 90, 180, -90 };
 
     // Start is called before the first frame update
     void Start()
     {
-        StageIndex = FirstStageIndex - 1;
+        StageIndex = FirstStageIndex - 1;/*new int[FirstStageIndex - 1, FirstStageIndex - 1];*/
         StageManager(aheadStage);
     }
 
-    // Update is called once per frame
+
     void Update()
     {
-        int targetPosIndex = (int)(Target.position.z / StageSize);
+        targetPosIndexX = (int)(Target.position.x / StageSize);
+        targetPosIndexZ = (int)(Target.position.z / StageSize);
 
-        if (targetPosIndex + aheadStage > StageIndex)
+        //プレイヤーがステージ移動したらの処理
+        //
+        if (targetPosIndexZ + aheadStage > StageIndex)
         {
-            StageManager(targetPosIndex + aheadStage);
+            StageManager(targetPosIndexZ + aheadStage);
         }
     }
+
+    /// <param name="maps">今あるステージの数</param>
     void StageManager(int maps)
     {
         if (maps <= StageIndex)
@@ -48,7 +77,7 @@ public class MapGenerator : MonoBehaviour
             StageList.Add(stage);
         }
 
-        while (StageList.Count > aheadStage + 1)//古いステージを削除する
+        while (StageList.Count > aheadStage + 2)//古いステージを削除する
         {
             DestroyStage();
         }
@@ -63,20 +92,25 @@ public class MapGenerator : MonoBehaviour
     /// <returns></returns>
     GameObject MakeStage(int index)
     {
+        //生成するステージをランダムに選択する
         int nextStage = Random.Range(0, stagenum.Length);
+        //生成する角度をランダムに選択する
+        int rotateStage = Random.Range(0, _mapRotates.Length);
 
-        GameObject stageObject = (GameObject)Instantiate(stagenum[nextStage], new Vector3(0, 0, index * StageSize), Quaternion.identity);
+        GameObject stageObject =
+            Instantiate(stagenum[nextStage], new Vector3(0, 0, index * StageSize), Quaternion.Euler(0, _mapRotates[rotateStage], 0));
 
         return stageObject;
     }
-        /// <summary>
-        /// ステージを消すメソッド
-        /// </summary>
+    /// <summary>
+    /// ステージを消すメソッド
+    /// </summary>
     void DestroyStage()
     {
         GameObject oldStage = StageList[0];
         StageList.RemoveAt(0);
         oldStage.SetActive(false);
+        FalseList.Add(oldStage);
     }
 
 }

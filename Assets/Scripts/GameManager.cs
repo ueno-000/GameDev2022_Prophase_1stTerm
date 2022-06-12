@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour,IPause
     }
 
     /// <summary>ˆê’â~‚Ì‚½‚ß‚Ìˆ—</summary>
-    public void Pause()
+    public void Pause(float time)
     {
         isPause = true;
     }

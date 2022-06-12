@@ -35,7 +35,7 @@ public class PauseManager : MonoBehaviour
 
             if (_pauseFlg)
             {
-                i?.Pause();     // ここで「多態性」が使われている
+                i?.Pause(float time);     // ここで「多態性」が使われている
                 _config.SetActive(true);
             }
             else
