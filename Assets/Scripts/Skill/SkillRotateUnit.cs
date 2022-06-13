@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
  
-public class SkillRotateUnit : MonoBehaviour
+public class SkillRotateUnit : SkillBase
 {
+    /// <summary> UŒ‚—Í </summary>
+    [SerializeField]int  _damageValue = 1;
     //”
     [SerializeField] int _num = 1;
     //@Œ»İ‚ÌŠp“x
@@ -31,5 +33,13 @@ public class SkillRotateUnit : MonoBehaviour
         angle += _rotateSpeed * Time.deltaTime;
         //@Šp“x‚ğ0`360“x‚ÌŠÔ‚ÅŒJ‚è•Ô‚·
         angle = Mathf.Repeat(angle, 360f);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            collision.gameObject.GetComponent<IReceiveDamage>().ReceiveDamage(_damageValue);
+        }
     }
 }
