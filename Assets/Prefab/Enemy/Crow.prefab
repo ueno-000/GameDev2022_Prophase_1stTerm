@@ -391,7 +391,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4274317137248570093}
-  - component: {fileID: 4183169739181310601}
   m_Layer: 0
   m_Name: Crow
   m_TagString: Untagged
@@ -408,34 +407,13 @@ Transform:
   m_GameObject: {fileID: 4276815001721443243}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.9670515, y: -0.00000047683716, z: -20.048223}
-  m_LocalScale: {x: 3.5, y: 3.5, z: 3.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4274004137170584203}
-  - {fileID: 4274080968918995103}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &4183169739181310601
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4276815001721443243}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ec8448d2cd9f5964c974b5bc13385ab2, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4276819457450800577
 GameObject:
   m_ObjectHideFlags: 0
@@ -831,6 +809,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4274004137170584203}
   - component: {fileID: 4230320192484976797}
+  - component: {fileID: 5639072302873223454}
   m_Layer: 0
   m_Name: Eaglle_Elite
   m_TagString: Untagged
@@ -849,7 +828,8 @@ Transform:
   m_LocalPosition: {x: -0, y: 0.6105297, z: -2.1175823e-24}
   m_LocalScale: {x: 7.524, y: 7.524, z: 7.524}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 4274080968918995103}
   m_Father: {fileID: 4274317137248570093}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -938,6 +918,26 @@ SkinnedMeshRenderer:
     m_Center: {x: 0, y: 0.6061543, z: -0.03434094}
     m_Extent: {x: 0.5074854, y: 0.11878759, z: 0.23936614}
   m_DirtyAABB: 0
+--- !u!95 &5639072302873223454
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4277022411900025059}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ec8448d2cd9f5964c974b5bc13385ab2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4277036445328731569
 GameObject:
   m_ObjectHideFlags: 0
@@ -1153,14 +1153,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4277539580399711905}
-  m_LocalRotation: {x: 0.000000021855694, y: 0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071067}
+  m_LocalPosition: {x: 0, y: 0, z: -0.081144296}
+  m_LocalScale: {x: 0.13290803, y: 0.13290805, z: 0.13290805}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4274211174272104861}
-  m_Father: {fileID: 4274317137248570093}
-  m_RootOrder: 1
+  m_Father: {fileID: 4274004137170584203}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4277544252365678089
 GameObject:
