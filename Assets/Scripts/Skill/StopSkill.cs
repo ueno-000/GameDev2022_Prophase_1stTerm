@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StopSkill : SkillBase
 {
-    float[] _effectTime = new float[] { 0.2f,0.5f,1,1.5f,2};
+    float[] _effectTime = new float[] { 0.5f,1f,1.5f,2f,3f};
 
 
     private void OnTriggerEnter(Collider other)

@@ -1,12 +1,15 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 /// <summary>
 /// 一時停止・再開を制御する。
 /// </summary>
 public class PauseManager : MonoBehaviour
 {
-    [SerializeField] GameObject _config;
 
+    [SerializeField] GameObject _config;
+    float _time = 999f;
     /// <summary>true の時は一時停止とする</summary>
     bool _pauseFlg = false;
 
@@ -35,7 +38,7 @@ public class PauseManager : MonoBehaviour
 
             if (_pauseFlg)
             {
-                i?.Pause(float time);     // ここで「多態性」が使われている
+                i?.Pause(_time);     // ここで「多態性」が使われている
                 _config.SetActive(true);
             }
             else

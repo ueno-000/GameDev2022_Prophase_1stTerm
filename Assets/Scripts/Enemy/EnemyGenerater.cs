@@ -32,7 +32,7 @@ public class EnemyGenerater : MonoBehaviour,IPause
         }
     }
 
-    public void Pause()
+    public void Pause(float time)
     {
         isPause = true;
     }
