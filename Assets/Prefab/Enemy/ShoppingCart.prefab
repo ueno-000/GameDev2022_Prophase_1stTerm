@@ -75,6 +75,7 @@ GameObject:
   - component: {fileID: 6644208990398142620}
   - component: {fileID: 2019912715562747461}
   - component: {fileID: 2555401829151815612}
+  - component: {fileID: 714949287052579710}
   m_Layer: 0
   m_Name: ShoppingCart
   m_TagString: Untagged
@@ -90,8 +91,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7323888473573823077}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 0.49636078, y: -0.52645123, z: 0.08746117}
-  m_LocalScale: {x: 100, y: 99.999954, z: 99.999954}
+  m_LocalPosition: {x: 0.49636078, y: -0.5264512, z: 0.08746117}
+  m_LocalScale: {x: 100, y: 99.999954, z: 99.99995}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6951745904301009244}
@@ -162,3 +163,23 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 63c0f79fcb7affb4494776e4f3d585f9, type: 3}
+--- !u!95 &714949287052579710
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7323888473573823077}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 058385ecffae3ff4e8df97c0446c601d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
