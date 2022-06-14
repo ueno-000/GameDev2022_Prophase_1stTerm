@@ -5,31 +5,15 @@ using HC.Debug;
 /// <summary>
 /// 可視化されたバリアに触れると敵に攻撃が入る
 /// </summary>
-public class SkillBarrier : MonoBehaviour
+public class SkillBarrier : SkillBase
 {
-    /// <summary>
-    /// 攻撃範囲
-    /// </summary>
-    [Header("Player→Skill→[Skill1]をアタッチ"), SerializeField] GameObject _hitArea;
-    [Header("Player→Skill→[Skill1]をアタッチ"), SerializeField] SphereCollider _hitAreaCol;
+    /// <summary>攻撃範囲</summary>
+    [Header("Player→AttachedSkillObject→Gasolineをアタッチ"), SerializeField] SphereCollider _hitAreaCol;
 
+    [SerializeField] float[] _radius = new float[5] {1,1,3,3,5};
 
-    //生成する位置
-    [Header("生成位置"), SerializeField] Transform _position;
-
-    [SerializeField] GameObject _player;
-
-
-    /// <summary>
-    /// Damage
-    /// </summary>
-    [Header("ダメージ"), SerializeField] public int _damageValue = 10;
-    /// <summary>
-    /// インターバル
-    /// </summary>
-    [Header("スキルを使ってからのインターバル"), SerializeField] float _skillInterval = 10f;
-
-
+    /// <summary> Damage </summary>
+    [Header("ダメージ"), SerializeField] int[] _damageValue =new int[5] {1,2,2,3,5};
 
     //=====Physics Debuggeの設定=====
     [Header("可視コライダーの色"), Header("Physics Debuggeの設定"), SerializeField]
@@ -41,18 +25,31 @@ public class SkillBarrier : MonoBehaviour
 
     private void Start()
     {
-        _hitArea.GetComponent<ColliderVisualizer>().Initialize(_visualizerColor, _message, _fontSize);
-        _hitAreaCol = _hitArea.GetComponent<SphereCollider>();
+        _hitAreaCol = _hitAreaCol.GetComponent<SphereCollider>();
+        _hitAreaCol.radius = _radius[_skillLevel - 1];
+        _hitAreaCol.GetComponent<ColliderVisualizer>().Initialize(_visualizerColor, _message, _fontSize);
     }
-
+    private void Update()
+    {
+        Attack();
+    }
     private void OnTriggerStay(Collider other)
     {
-        var damagetarget = other.gameObject.GetComponent<IReceiveDamage>();
-
-        //IDamagable は AddDamage の処理が必須
-        if (damagetarget != null && !_player)
+        if (other.gameObject.tag == "Enemy")
         {
-            other.gameObject.GetComponent<IReceiveDamage>().ReceiveDamage(_damageValue);
+            other.gameObject.GetComponent<IReceiveDamage>().ReceiveDamage(_damageValue[_skillLevel-1]);
         }
     }
+
+    private void Attack()
+    {
+        if (_isLevelUp)
+        {
+            Destroy(transform.GetChild(0).gameObject);
+            _hitAreaCol.radius = _radius[_skillLevel - 1];
+            _hitAreaCol.GetComponent<ColliderVisualizer>().Initialize(_visualizerColor, _message, _fontSize);
+            _isLevelUp = false;
+        }
+    }
+
 }
