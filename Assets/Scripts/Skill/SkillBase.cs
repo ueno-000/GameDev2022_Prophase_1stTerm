@@ -8,7 +8,8 @@ using UnityEngine;
 public class SkillBase : MonoBehaviour
 {
     [SerializeField] public int _skillLevel = 1;
-    //TaskManager _taskManager;
+
+    [SerializeField] public bool _isLevelUp = false;
 
 
 }
