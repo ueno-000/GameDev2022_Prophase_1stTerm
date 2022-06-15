@@ -7,7 +7,7 @@ public class PlayerValueScript : MonoBehaviour,IGetValue,IReceiveDamage
     /// <summary>
     /// デバッグモードTrueにすると攻撃を受けない
     /// </summary>
-    [Header("【デバッグ用】：?をつけると攻撃を受けない"), SerializeField] bool _debugMode = false;
+    [Header("【デバッグ用】：?をつけると攻撃を受けない"), SerializeField] public bool _debugMode = false;
 
     /// <summary> HitPoint </summary>
     [Header("体力"),SerializeField] int _hp = 100;

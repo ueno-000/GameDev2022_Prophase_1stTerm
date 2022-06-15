@@ -57,11 +57,5 @@ public class PlayerController : MonoBehaviour,IPause
         _rb.isKinematic = false;
         _rb.WakeUp();
     }
-    private void OnCollisionStay(Collision collision)
-    {
-        if (collision.gameObject.tag == "Enemy")
-        {
-            collision.gameObject.GetComponent<IReceiveDamage>().ReceiveDamage(1);
-        }
-    }
+
 }
