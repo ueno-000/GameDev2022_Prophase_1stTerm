@@ -11,5 +11,8 @@ public class SkillBase : MonoBehaviour
 
     [SerializeField] public bool _isLevelUp = false;
 
-
+    private void Start()
+    {
+        _skillLevel = 1;
+    }
 }
