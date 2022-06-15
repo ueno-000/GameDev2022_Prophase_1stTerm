@@ -1,18 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-public class FishTask4 : MonoBehaviour
+public class FishTask4 : ITaskInterface
 {
-    // Start is called before the first frame update
-    void Start()
+    public string _getText()
     {
-        
+        return "”­Ë•¨‚ğ1‘‰Á";
     }
-
-    // Update is called once per frame
-    void Update()
+    public void OnTaskSetting()
     {
-        
+    }
+    public bool _isCheckTask()
+    {
+        return true;
     }
 }

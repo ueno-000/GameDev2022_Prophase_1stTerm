@@ -7,11 +7,12 @@ using UnityEngine.UI;
 /// <summary>
 /// ゲーム上のチュートリアルを管理するマネージャクラス
 /// </summary>
-public class SampleTaskManager : MonoBehaviour
+public class FishTaskManager : MonoBehaviour
 {
-    // チュートリアル用UI
-    protected RectTransform TaskTextArea;
-    protected Text TaskText;
+
+    // UI
+    [SerializeField] RectTransform TaskTextArea;
+    [SerializeField] Text TaskText;
 
     // チュートリアルタスク
     protected ITaskInterface currentTask;
@@ -20,14 +21,15 @@ public class SampleTaskManager : MonoBehaviour
 
     void Start()
     {
-        // チュートリアル表示用UIのインスタンス取得
-        TaskTextArea = GameObject.Find("SkillName").GetComponent<RectTransform>();
-        TaskText = TaskTextArea.Find("Text").GetComponentInChildren<Text>();
 
         // チュートリアルの一覧
         _task = new List<ITaskInterface>()
         {
-            new FishTask1()
+            new FishTask1(),
+            new FishTask2(),
+            new FishTask3(),
+            new FishTask4(),
+            new FishTask5(),
         };
 
         // 最初のチュートリアルを設定
