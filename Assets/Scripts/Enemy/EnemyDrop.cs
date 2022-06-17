@@ -7,15 +7,18 @@ public class EnemyDrop : MonoBehaviour, IReceiveDamage
     [Header("経験値のPrefabをアタッチする"), SerializeField] GameObject _retentionExpPrefab;
 
     [Header("HP"), SerializeField] int _hp = 5;
-
+    
+    Vector3 _pos;
     bool isLive = true;
 
     private void Update()
     {
+        _pos = this.transform.position;
+
         if (_hp <= 0 && isLive)
         {
-            Instantiate(_retentionExpPrefab,this.transform,false);
-            Destroy(this.gameObject,1f);
+            Instantiate(_retentionExpPrefab,_pos,Quaternion.identity);
+            this.gameObject.SetActive(false);
             isLive = false;
         }
     }
@@ -26,6 +29,5 @@ public class EnemyDrop : MonoBehaviour, IReceiveDamage
     public void ReceiveDamage(int damage)
     {
         _hp -= damage;
-        Debug.Log("Enemyhp: " + _hp);       
     }
 }

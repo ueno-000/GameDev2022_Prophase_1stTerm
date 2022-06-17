@@ -10,6 +10,7 @@ public class EnemyValue : MonoBehaviour, IReceiveDamage
     [SerializeField] float _speed = 5;
     //Player
     GameObject _player;
+ 
     bool isGameOver = false;
 
     Rigidbody _rb;

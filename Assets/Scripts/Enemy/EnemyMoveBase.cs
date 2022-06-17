@@ -8,13 +8,16 @@ public class EnemyMoveBase : MonoBehaviour, IPause
     //ˆÚ“®‘¬“x
     [SerializeField] float _speed = 0.5f;
     GameObject _player;
-    [SerializeField] Animator _anim;
+    Animator _anim;
 
     float _time;
+
+    bool isPause = false;
     private void Start()
     {
         _player = GameObject.Find("Player");
         _anim = transform.GetChild(0).gameObject.GetComponent<Animator>();
+        isPause = false;
     }
 
     void Update()
@@ -40,21 +43,31 @@ public class EnemyMoveBase : MonoBehaviour, IPause
 
     public void Pause(float time)
     {
+        isPause = true;
+        _damageValue = 0;
         _time = time;
         _speed = 0;
         _anim.SetBool("isPause", true);
-        StartCoroutine("PauseTime");
+        if (time != 999)
+        {
+            StartCoroutine("PauseTime");
+        }
     }
     public void Resume()
     {
+        isPause = false;
         _anim.SetBool("isPause", false);
         _speed = 2;
+        
     }
 
     IEnumerator PauseTime()
     {
-        yield return new WaitForSeconds(_time);
-        Resume();
+        if (isPause)
+        {
+            yield return new WaitForSeconds(_time);
+            Resume();
+        }
     }
 
 
