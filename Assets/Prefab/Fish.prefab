@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 5067327454666497430}
   - component: {fileID: 8213748704162878003}
   - component: {fileID: 6204253451277625081}
-  - component: {fileID: 7254007977332125501}
   - component: {fileID: 893649451082557650}
+  - component: {fileID: 5389525389339010429}
+  - component: {fileID: 8317950214262238220}
   m_Layer: 0
   m_Name: Fish
   m_TagString: Untagged
@@ -85,20 +86,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &7254007977332125501
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5555493417754773292}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.24567118
-  m_Height: 0.9481201
-  m_Direction: 0
-  m_Center: {x: 0, y: 0.01263532, z: -4.248585e-17}
 --- !u!54 &893649451082557650
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -115,3 +102,28 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5389525389339010429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5555493417754773292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b281ea9e71e54044b10d9531124e36b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &8317950214262238220
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5555493417754773292}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.77062666, y: 1.502148, z: 0.07221816}
+  m_Center: {x: 0.0056705475, y: -0.017603308, z: -2.81135e-17}
