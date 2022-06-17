@@ -21,17 +21,17 @@ public class SkillRotateUnit : SkillBase,IPause
     {
         this.gameObject.transform.position = _player.position;
 
-        if (_skillLevel == 2)
+        switch (_skillLevel)
         {
-            _anim.SetBool("isBool1", true);
-        }
-        if (_skillLevel == 3)
-        {
-            _anim.SetBool("isBool2", true);
-        }
-        if (_skillLevel == 4)
-        {
-            _anim.SetBool("isBool4", true);
+            case 2:
+                _anim.SetBool("isBool1", true);
+                break;
+            case 3:
+                _anim.SetBool("isBool2", true);
+                break;
+            case 4:
+                _anim.SetBool("isBool4", true);
+                break;
         }
     }
 

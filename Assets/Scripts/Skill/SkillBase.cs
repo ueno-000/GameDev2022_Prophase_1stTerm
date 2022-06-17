@@ -15,4 +15,5 @@ public class SkillBase : MonoBehaviour
     {
         _skillLevel = 1;
     }
+
 }
