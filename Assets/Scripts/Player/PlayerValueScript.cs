@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerValueScript : MonoBehaviour,IGetValue,IReceiveDamage
+public class PlayerValueScript : AudioBase, IGetValue,IReceiveDamage
 {
     /// <summary>
     /// デバッグモードTrueにすると攻撃を受けない
@@ -28,7 +28,9 @@ public class PlayerValueScript : MonoBehaviour,IGetValue,IReceiveDamage
     /// <summary>DefensePower</summary>
     [Header("防御力"), SerializeField] float _defensePower = 5f;
 
-    [HideInInspector]public bool isGameOver = false;
+    [HideInInspector] static public bool isGameOver = false;
+
+    [Header("ダメージを受けた時のサウンド"),SerializeField] AudioClip _damageSound;
 
     public int Hp
     {
@@ -42,11 +44,15 @@ public class PlayerValueScript : MonoBehaviour,IGetValue,IReceiveDamage
         }
     }
 
-
+    private void Awake()
+    {
+        _hp += PlayerSpawnScript._hp; 
+    }
     void Start()
     {
-        _maxHp =helth.gameObject.GetComponent<HealthController>()._maxHp;
+        isGameOver = false;
         helth = helth.GetComponent<HealthController>();
+        helth.gameObject.GetComponent<HealthController>()._maxHp = _hp;
        // _nowExp = expcontroller.gameObject.GetComponent<EXPController>()._exp;
         expcontroller = expcontroller.GetComponent<EXPController>();
     }
@@ -80,7 +86,12 @@ public class PlayerValueScript : MonoBehaviour,IGetValue,IReceiveDamage
         if (isGameOver == false && _debugMode == false)
         {
             _hp -= damage;
-            Debug.Log("add: " + damage + "hp: " + _hp);
+            Play(_damageSound,0.5f);
         }
+    }
+
+    public void Recovery()
+    {
+        _hp += 50;
     }
 }

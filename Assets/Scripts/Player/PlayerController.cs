@@ -13,6 +13,11 @@ public class PlayerController : MonoBehaviour,IPause
     //// エディタから「BulletGenerator」スクリプトを設定
     //public BulletGenerator _bulletGenerator;
 
+    private void Awake()
+    {
+        _movePower += PlayerSpawnScript._speed;
+    }
+
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
