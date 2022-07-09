@@ -30,7 +30,7 @@ public class PlayerSpawnScript : MonoBehaviour
 
     void Start()
     {
-        if (_player[_charaID] != null&&_player[_charaID])
+        if (_player != null &&_player[_charaID])
         {
             _player[_charaID].SetActive(true);
             _skills[_charaID].SetActive(true);
