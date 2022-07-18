@@ -17,6 +17,8 @@ public class MapGenerator : MonoBehaviour
     /// <summary> 非アクティブにしたステージのリスト</summary>
     [Header("非アクティブにしたステージのリスト"), SerializeField] List<GameObject> FalseList = new List<GameObject>();
 
+    //配列作っておく
+    
     [Header("ステージグリットリスト"), SerializeField]
     private List<stageList> GritList = new List<stageList>();
 
